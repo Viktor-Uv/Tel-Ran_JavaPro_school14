@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <h1>It's working!</h1>
+
+    <h2 th:text="${time}">placeholder</h2>
+
+    <h3 th:text="${ students[2].last + ' ' + students[2].first }"></h3>
+
+    <span th:if=" ${ #lists.size(students)} > 3" th:text="BIG" />
+    <span th:if=" ${ #lists.size(students)} <= 3" th:text="SMALL" />
+
+    <ul>
+        <li th:each="student : ${students}"
+            th:text="|Full name is ${student.first} ${student.last}|"
+        />
+    </ul>
+
+    <span th:each="student : ${students}">
+        <span th:text="${student.last}"/>
+        <a th:href="@{/student/update/{id}(id=${student.id})}">update</a>
+        <a th:href="@{/student/delete/{id}(id=${student.id})}">delete</a>
+        <br/>
+    </span>
+
+</html>

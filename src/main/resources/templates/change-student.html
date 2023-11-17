@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<form method="post" th:action="@{/student/{id}(id=${student.id})}" th:object="${student}">
+    <input type="hidden" th:field="*{id}" id="id"/>
+
+    <label for="first">First</label>
+    <input type="text" th:field="*{first}" id="first" placeholder="First" />
+    <span th:if="${#fields.hasErrors('first')}" th:errors="*{first}"></span>
+    <br/>
+
+    <label for="last">Last</label>
+    <input type="text" th:field="*{last}" id="last" placeholder="Last" />
+    <span th:if="${#fields.hasErrors('last')}" th:errors="*{last}"></span>
+    <br/>
+
+    <label for="age">Age</label>
+    <input type="text" th:field="*{age}" id="age" placeholder="Age" />
+    <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+    <br/>
+
+    <input type="submit" value="Change a student">
+</form>
+</html>
